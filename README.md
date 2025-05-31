@@ -64,10 +64,10 @@ LIMIT 10 OFFSET (page - 1) * 10
 
 ## 📷 UI Screenshots
 
-| Dashboard             | Add Expense Form         | Category Picker |
-|----------------------|--------------------------|-----------------|
-| ![Dashboard](screenshots/dashboard.png) | ![Form](screenshots/add_form.png) | ![Categories](screenshots/categories.png) |
-![img.png](img.png)
+| Dashboard            | Add Expense Form         | Logout                  |       Login Screen           |
+|----------------------|--------------------------|-------------------------------------------|
+| ![img.png](img.png)  | ![img.png](img.png) | ![img.png](img.png) |![img_1.png](img_1.png)
+
 ---
 
 ## ⚖️ Trade-offs / Assumptions

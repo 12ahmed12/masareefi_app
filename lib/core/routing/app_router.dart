@@ -59,18 +59,9 @@ final router = GoRouter(
       GoRoute(
         path: Routes.dashboard,
         name: Routes.dashboard,
-        builder: (context, state) => BlocProvider(
-          create: (context) => getIt<DashboardCubit>()..loadDashboardData(),
-          child: UpgradeAlert(
-            barrierDismissible: false,
-            showIgnore: false,
-            showLater: true,
-            showReleaseNotes: true,
-            dialogStyle: UpgradeDialogStyle.cupertino,
-            upgrader: upgrader,
-            child: const DashboardScreen(),
-          ),
-        ),
+        builder: (context, state) => BlocProvider.value(
+            value: getIt<DashboardCubit>(), // Use the same instance
+            child: const DashboardScreen()),
       ),
 
       GoRoute(

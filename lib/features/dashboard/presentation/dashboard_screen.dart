@@ -156,11 +156,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           FloatingActionButton(
             heroTag: 'addExpense',
             onPressed: () {
-              context.pushNamed(Routes.addExpense).then((value) {
-                if (value == true) {
-                  context.read<DashboardCubit>().refreshDashboard();
-                }
-              });
+              context.pushNamed(Routes.addExpense);
             },
             backgroundColor: AppColors.mainColor,
             child: Icon(Icons.add, color: Colors.white),

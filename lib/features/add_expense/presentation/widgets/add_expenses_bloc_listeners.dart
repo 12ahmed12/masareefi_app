@@ -6,6 +6,9 @@ import 'package:masareefi/core/theming/styles.dart';
 import 'package:masareefi/features/add_expense/logic/add_expense_cubit.dart';
 import 'package:masareefi/features/add_expense/logic/add_expense_state.dart';
 
+import '../../../../core/di/service_locator.dart';
+import '../../../dashboard/logic/dashboard_cubit.dart';
+
 class AddExpenseBlocListener extends StatelessWidget {
   const AddExpenseBlocListener({super.key});
 
@@ -21,7 +24,9 @@ class AddExpenseBlocListener extends StatelessWidget {
         } else if (state is AddExpenseSuccess) {
           _showSnackBar(
               context, "تم إضافة المصروف بنجاح", AppColors.successColor);
-          Future.delayed(const Duration(milliseconds: 1000), () {
+          Future.delayed(const Duration(milliseconds: 100), () {
+            getIt<DashboardCubit>().refreshDashboard();
+
             Navigator.of(context).pop(true); // now safely returns true
           }); // <- return true to trigger refresh
         }

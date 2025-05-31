@@ -63,11 +63,16 @@ dependencies:
   awesome_dialog: ^3.2.1
   form_field_validator: ^1.1.0
   rename: ^3.1.0
+  bloc_test: ^9.1.7
+  pdf: ^3.10.4
+  share_plus: ^7.2.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  mockito: ^5.4.4
 
 flutter:
   uses-material-design: true
@@ -76,3 +81,5 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/images/launcher_icon.png
+    - assets/fonts/cairo.ttf
+

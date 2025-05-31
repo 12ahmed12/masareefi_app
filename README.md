@@ -8,6 +8,9 @@ A beautifully designed Flutter application that helps Arabic-speaking users trac
 ## 📦 Overview of Architecture & Structure
 
 The project follows a **clean architecture without a domain layer** for simplicity:
+--using feature module >> data (api, repository, model) >> presentation (screens,widgets)>> logic (cubit,states)
+--using DI and go_router 
+--common widgets and constants shared across modules
 
 ```
 lib/
@@ -107,9 +110,9 @@ flutter run
 
 ## 🐞 Known Bugs / Missing Features
 
-- Date picker does not persist selected date between sessions.
 - Currently, only Android has been tested.
 - no icon and splash or logo yet.
+- no image picker or different currency support.
 
 ---
 

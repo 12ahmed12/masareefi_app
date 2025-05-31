@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/helpers/date_range_helper.dart';
+import '../../add_expense/data/models/expense_model.dart';
 import '../data/repository/dashboard_repository.dart';
 import 'dashboard_states.dart';
 import '../../../core/constants/app_constants.dart';
@@ -73,6 +74,9 @@ class DashboardCubit extends Cubit<DashboardState> {
     _currentPage = 1;
     loadDashboardData(showBodyLoaderOnly: true);
   }
+
+  List<ExpenseModel> get currentExpenses =>
+      state is DashboardLoaded ? (state as DashboardLoaded).recentExpenses : [];
 
   void loadMoreExpenses() async {
     logger.w('⚠️ trigger loadmore');

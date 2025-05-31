@@ -15,8 +15,10 @@ import 'package:masareefi/features/dashboard/presentation/widgets/expenses_card.
 import 'package:masareefi/features/dashboard/presentation/widgets/expenses_tile.dart';
 import 'package:masareefi/features/dashboard/presentation/widgets/header.dart';
 import 'package:masareefi/features/dashboard/presentation/widgets/loading_indicator.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../core/constants/app_constants.dart';
+import '../../../core/helpers/pdf_export_helper.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -135,16 +137,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context.pushNamed(Routes.addExpense).then((value) {
-            if (value == true) {
-              context.read<DashboardCubit>().refreshDashboard();
-            }
-          });
-        },
-        backgroundColor: AppColors.mainColor,
-        child: Icon(Icons.add, color: Colors.white, size: 28.sp),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton(
+            heroTag: 'pdfExport',
+            onPressed: () async {
+              final expenses = context.read<DashboardCubit>().currentExpenses;
+              final file =
+                  await PdfExportHelper.generateExpenseReport(expenses);
+              await Share.shareXFiles([XFile(file.path)],
+                  text: 'تقرير المصروفات');
+            },
+            backgroundColor: Colors.redAccent,
+            child: Icon(Icons.picture_as_pdf, color: Colors.white),
+          ),
+          SizedBox(height: 12.h),
+          FloatingActionButton(
+            heroTag: 'addExpense',
+            onPressed: () {
+              context.pushNamed(Routes.addExpense).then((value) {
+                if (value == true) {
+                  context.read<DashboardCubit>().refreshDashboard();
+                }
+              });
+            },
+            backgroundColor: AppColors.mainColor,
+            child: Icon(Icons.add, color: Colors.white),
+          ),
+        ],
       ),
     );
   }

@@ -19,7 +19,7 @@ class DashboardHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 190.h,
+      height: 210.h,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -38,7 +38,7 @@ class DashboardHeader extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
         child: Column(
           children: [
-            SizedBox(height: 8.h),
+            SizedBox(height: 20.h),
             // Header Row
             Row(
               children: [

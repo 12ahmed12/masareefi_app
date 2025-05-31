@@ -21,7 +21,9 @@ class AddExpenseBlocListener extends StatelessWidget {
         } else if (state is AddExpenseSuccess) {
           _showSnackBar(
               context, "تم إضافة المصروف بنجاح", AppColors.successColor);
-          Navigator.of(context).pop(true); // <- return true to trigger refresh
+          Future.delayed(const Duration(milliseconds: 1000), () {
+            Navigator.of(context).pop(true); // now safely returns true
+          }); // <- return true to trigger refresh
         }
       },
       child: const SizedBox.shrink(),

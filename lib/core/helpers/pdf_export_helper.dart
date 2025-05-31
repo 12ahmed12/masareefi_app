@@ -10,7 +10,7 @@ class PdfExportHelper {
     final pdf = pw.Document();
 
     // Load the Cairo Arabic font from assets
-    final fontData = await rootBundle.load('assets/fonts/Cairo-Regular.ttf');
+    final fontData = await rootBundle.load('assets/fonts/cairo.ttf');
     final ttf = pw.Font.ttf(fontData);
 
     pdf.addPage(
